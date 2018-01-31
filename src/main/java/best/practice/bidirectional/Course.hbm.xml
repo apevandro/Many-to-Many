@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="best.practice.bidirectional">
+    <class name="Course" table="COURSES">
+        <meta attribute="class-description">
+            Join table many-to-many mapping.
+        </meta>
+        <id name="courseId" column="CourseId" type="int" access="field"/>
+        <property name="name" column="Name" type="string"/>
+        <property name="totalCredits" column="TotalCredits" type="int"/>
+        <set name="discCourse" inverse="true">
+            <key column="CourseId"/>
+            <one-to-many class="DisciplineCourse"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="intermediate_entity">
+    <class name="DisciplineCourse" table="DISCIPLINE_COURSE" mutable="false">
+    	<meta attribute="class-description">
+    		Many-to-many mapping.
+    		Join table with additional columns as intermediate entity class.
+    	</meta>
+    	<composite-id name="id" class="DisciplineCourse$Id">
+    	    <key-property name="time" column="Time" access="field"/>
+    		<key-property name="courseId" column="CourseId" access="field"/>
+    		<key-property name="discId" column="DiscId" access="field"/>
+    	</composite-id>
+    	<property name="title" column="Title" type="string" not-null="true" />
+    </class>
+</hibernate-mapping>

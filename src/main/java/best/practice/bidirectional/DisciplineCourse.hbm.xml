@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping package="best.practice.bidirectional">
+    <class name="DisciplineCourse" table="DISCIPLINE_COURSE" mutable="false">
+    	<meta attribute="class-description">
+    		Many-to-many mapping.
+    		Join table with additional columns as intermediate entity class.
+    	</meta>
+    	<id name="id" column="Id" type="int" access="field"/>
+        <property name="duration" column="Duration" type="int" not-null="true"/>
+    	<property name="title" column="Title" type="string" not-null="true"/>
+    	<many-to-one name="course" column="CourseId" class="Course"/>
+    	<many-to-one name="discipline" column="DiscId" class="Discipline"/>
+    </class>
+</hibernate-mapping>
